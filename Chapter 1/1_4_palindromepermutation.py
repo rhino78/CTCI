@@ -4,10 +4,28 @@
 #input Tact Coa
 #output True (permutations: "taco cat", "atco cta", ect)
 
+def createPalindrome(palihash, charpali):
+	return False
+
+def createstrPalindrome(charpali):
+	return False
+
 def populateallpalidromes(palihash, palichar):
-	return True
+	results = []
+	firstchar = createPalindrome(palihash, palichar)
+	results.append(firstchar)
+	secondchar = createstrPalindrome(firstchar)
+	results.append(secondchar)
+	return results
 
 def ispalindrome(palihash, count):
+	firstTime = True
+	if count % 2 ==1:
+		for p in palihash:
+			if firstTime and p.Value == '1':
+				firstTime = False
+			else if not firstTime and p.Value != '2':
+				return False
 	return True
 
 def palindromepermutations(checkstr):
