@@ -5,10 +5,43 @@
 #output True (permutations: "taco cat", "atco cta", ect)
 
 def createPalindrome(palihash, charpali):
-	return False
+	newchar = {}
+	first = 0
+	last = len(charpali)
+	results = ''
+	for l,n in palihash.items():
+		if n == '1':
+			newchar[len(charpali) / 2] = l
+		else:
+			newchar[first] = l
+			newchar[last] = l
+			first = first +1
+			last = last -1
+
+	if '\0' in newchar:
+		keyindex = newchar.index('\0')
+		newchar[keyindex] = ' '
+
+	for n, l in newchar.items():
+		results = results + srt(l)
+
+
+	return str(results)
 
 def createstrPalindrome(charpali):
-	return False
+	palichar = list(charpali)
+	temp0 = palichar[0]
+	temp1 = palichar[1]
+	temp6 = palichar[6]
+	temp7 = palichar[7]
+
+	newchar = list(charpali)
+	newchar[0] = temp1
+	newchar[1] = temp0
+	newchar[6] = temp7
+	newchar[7] = temp6
+
+	return ''.join(palichar)
 
 def populateallpalidromes(palihash, palichar):
 	results = []
@@ -21,10 +54,10 @@ def populateallpalidromes(palihash, palichar):
 def ispalindrome(palihash, count):
 	firstTime = True
 	if count % 2 ==1:
-		for p in palihash:
-			if firstTime and p.Value == '1':
+		for l, n in palihash.items():
+			if firstTime and n == '1':
 				firstTime = False
-			else if not firstTime and p.Value != '2':
+			elif not firstTime and n != '2':
 				return False
 	return True
 
