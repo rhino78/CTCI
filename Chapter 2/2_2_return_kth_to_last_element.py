@@ -1,26 +1,27 @@
-#2.2 return kth to last element in a list
- # implement an algorithm to find the kth to last element of a singly linked list
+# 2.2 return kth to last element in a list
+# implement an algorithm to find the kth to last element of a singly linked list
+
+from LinkedList import *
 
 
- class Node(object):
+def getkthnode(linkedlist, k):
+    pointer2 = linkedlist.head
+    for i in range(k-1):
+        if pointer2.next != None:
+            pointer2 = pointer2.next
+        else:
+            return "k exceeds the length of linked list"
 
-    def __init__(self, data=None, next=None):
-        self.data = data
-        self.next = next
+    pointer1 = linkedlist.head
 
-    def get_data(self):
-        return self.data
+    while pointer2.next != None:
+        pointer2 = pointer2.next
+        pointer1 = pointer1.next
 
-    def get_next(self):
-        return self.next
-
-    def set_next(self, new_next):
-        self.next = new_next
+    return str(pointer1.value)
 
 
-def getKthNode(head, k):
-	curr = head
-	while(k > 0 and curr is not null):
-		curr = curr.next
-		k = k -1
-	return curr
+# -----test-----
+L = randomLinkedList(8, 0, 100)
+print(L)
+print("the 3rd to last element is: " + getkthnode(L, 3))
