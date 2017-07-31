@@ -26,10 +26,10 @@ class LinkedList:
             self.tail = node
 
     def __str__(self):
-        if self.head != None:
+        if self.head is not None:
             index = self.head
             nodestore = [str(index.value)]
-            while index.next != None:
+            while index.next is not None:
                 index = index.next
                 nodestore.append(str(index.value))
             return "LinkedList  [ " + "->".join(nodestore) + " ]"
@@ -40,7 +40,7 @@ class LinkedList:
         current = self.head
         if current.value == node_value:
             self.head = self.head.next
-        while (current.next != None):
+        while current.next is not None:
             if current.next.value == node_value:
                 current.next = current.next.next
                 break
